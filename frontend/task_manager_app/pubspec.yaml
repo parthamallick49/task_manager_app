@@ -1,0 +1,42 @@
+name: task_manager_app
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.1 <4.0.0' # Updated Dart SDK version compatible with Flutter 3.19.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.3        # For making API requests
+  provider: ^6.0.0     # For state management (optional)
+  flutter_staggered_grid_view: ^0.6.1  # For grid view (optional for task categories)
+  google_fonts: ^2.3.2  # For custom fonts (optional)
+  cached_network_image: ^3.1.0 # For caching images (optional)
+  sqflite: ^2.3.3+1     # Downgraded version of sqflite that is compatible with Dart 3.3.1
+  path_provider: ^2.1.1
+  shared_preferences: ^2.0.15
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
+
