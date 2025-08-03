@@ -149,19 +149,21 @@ class TaskService {
   // getCurrentUser
   Future<Map<String, dynamic>> getCurrentUser() async {
     final token = await SharedPrefs.getToken();
+    print('[DEBUG] Token: $token'); // ✅ Check token
 
     if (token == null || token.isEmpty) {
       throw Exception('User not authenticated');
     }
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:5000/api/user/me'),
+      Uri.parse('http://10.0.2.2:5000/api/users/me'),
       headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
     );
-
+    print('[DEBUG] Response code: ${response.statusCode}');
+    print('[DEBUG] Response body: ${response.body}');
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {

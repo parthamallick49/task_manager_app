@@ -51,8 +51,14 @@ const generateToken = (id) => {
 
 const getCurrentUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    //console.log("🔍 req.userId =", req.userId); // Debug log
+
+    const user = await User.findById(req.userId).select('-password');
+    if (!user) {
+      console.log("❌ No user found with ID:", req.userId); // More debug info
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     res.json(user);
   } catch (error) {
     console.error('[ERROR] Failed to get current user:', error.message);

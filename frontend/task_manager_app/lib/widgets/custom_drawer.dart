@@ -9,6 +9,14 @@ class CustomDrawer extends StatelessWidget {
     final userProvider = Provider.of<UserProvider>(context);
     final user = userProvider.user;
 
+    /*if (user == null) {
+      // Show loading or guest state
+      return Drawer(
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }*/
     return Drawer(
       child: Column(
         children: [

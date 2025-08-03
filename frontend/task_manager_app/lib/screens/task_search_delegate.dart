@@ -1,7 +1,6 @@
 // lib/screens/task_search_delegate.dart
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/providers/task_provider.dart';
-import 'package:task_manager_app/models/task.dart';
 import 'package:provider/provider.dart';
 import 'package:task_manager_app/screens/task_detail_screen.dart';
 

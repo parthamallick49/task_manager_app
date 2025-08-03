@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes');
 const { errorHandler } = require('./middleware/errorMiddleware');
-const  getCurrentUser  = require('./controllers/userController');
+const { getCurrentUser } = require('./controllers/userController');
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 // Routes
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/me', getCurrentUser);
+//app.get('/api/me', getCurrentUser);
 
 
 

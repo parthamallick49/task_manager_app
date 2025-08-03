@@ -174,25 +174,25 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                       });
                     }
                   },
-                  child: _isUpdating
-                      ? CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  )
-                      : Text(
-                    widget.task.isCompleted ? 'Mark as Pending' : 'Mark as Completed',
-                    style: TextStyle(color: Colors.white),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: widget.task.isCompleted ? Colors.orange : Colors.green,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                  ),
+                  child: _isUpdating
+                      ? const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  )
+                      : Text(
+                    widget.task.isCompleted ? 'Mark as Pending' : 'Mark as Completed',
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -206,7 +206,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
           }
         },
         backgroundColor: Colors.redAccent,
-        child: Icon(Icons.delete, color: Colors.white),
+        child: const Icon(Icons.delete, color: Colors.white),
       ),
     );
   }
