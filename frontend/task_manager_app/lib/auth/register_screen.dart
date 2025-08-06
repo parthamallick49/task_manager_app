@@ -74,6 +74,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
               key: _formKey,
               child: Column(
                 children: [
+                  Image.asset(
+                    'assets/app_logo.png',
+                    height: 100,
+                  ),
+                  Text(
+                    'Task Manager',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: primaryColor,
+                    ),
+                  ),
+                  const SizedBox(height: 15,),
                   const Text(
                     'Create Account',
                     style: TextStyle(
