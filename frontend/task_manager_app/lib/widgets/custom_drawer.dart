@@ -33,7 +33,8 @@ class CustomDrawer extends StatelessWidget {
             title: Text('Logout'),
             onTap: () async {
               final prefs = await SharedPreferences.getInstance();
-              await prefs.remove('auth_token');
+              //await prefs.remove('auth_token');
+              await prefs.clear();
               userProvider.clearUser();
               Navigator.pushReplacementNamed(context, '/login');
             },

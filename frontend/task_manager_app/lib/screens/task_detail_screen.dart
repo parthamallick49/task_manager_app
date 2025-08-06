@@ -64,7 +64,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              color: Colors.white,
+              color: Colors.grey[50],
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -73,7 +73,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                     Text(
                       'Title',
                       style: TextStyle(
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
@@ -82,7 +82,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                     Text(
                       widget.task.title,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.black.withOpacity(0.8),
                       ),
                     ),
@@ -98,7 +98,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              color: Colors.white,
+              color: Colors.grey[50],
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -107,7 +107,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                     Text(
                       'Description',
                       style: TextStyle(
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
@@ -116,7 +116,7 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                     Text(
                       widget.task.description,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Colors.black.withOpacity(0.8),
                       ),
                     ),
@@ -179,12 +179,15 @@ class _TaskDetailScreenState extends State<TaskDetailScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   ),
                   child: _isUpdating
-                      ? const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  )
+                      ? const SizedBox(
+                    height: 20.0,
+                    width: 20.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),)
                       : Text(
                     widget.task.isCompleted ? 'Mark as Pending' : 'Mark as Completed',
                     style: const TextStyle(color: Colors.white),

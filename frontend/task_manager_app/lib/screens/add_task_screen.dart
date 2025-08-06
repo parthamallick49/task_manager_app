@@ -50,12 +50,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: /*AppBar(
-        title: Text("Add New Task", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.white,
-        elevation: 8.0, // Slight shadow for the app bar
-        iconTheme: IconThemeData(color: Colors.black),
-      ),*/CustomAppBar( title: 'Add New Task',),
+      appBar:CustomAppBar( title: 'Add New Task',),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
         child: Column(
@@ -120,8 +115,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ElevatedButton(
               onPressed: _isLoading ? null : _addTask, // Disable button when loading
               child: _isLoading
-                  ? CircularProgressIndicator(
-                color: Colors.white, // White spinner to match the button color
+                  ? SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                  strokeWidth: 3,
+                ),
               )
                   : Text(
                 'Add Task',
@@ -129,7 +129,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow[700], // Yellow color for the button
+                backgroundColor: Colors.yellow[700],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
