@@ -19,11 +19,14 @@ dependencies:
   path_provider: ^2.1.1
   shared_preferences: ^2.0.15
   cupertino_icons: ^1.0.6
+  lottie: ^2.7.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  launcher_name: ^1.0.2
 
 flutter:
   uses-material-design: true
@@ -38,5 +41,11 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+  assets:
+    - assets/animations/success.json
 
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"  # Path to your icon image
