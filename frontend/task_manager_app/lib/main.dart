@@ -49,13 +49,36 @@ class MyApp extends StatelessWidget {
             titleLarge: TextStyle(color: Colors.black),
           ),
         ),
-        initialRoute: token == null ? '/login' : '/',  // Redirect to login screen if no token
+        /*initialRoute: token == null ? '/login' : '/',  // Redirect to login screen if no token
         routes: {
           '/': (context) => HomeScreen(),
           '/add-task': (context) => AddTaskScreen(),
-          '/login': (context) => LoginScreen(), // Route for login
+          '/login': (context) => LoginScreen(), // Route for login*/
+        home: AuthGate(),
+        routes: {
+          '/login': (_) => LoginScreen(),
+          //'/': (_) => HomeScreen(),
+          '/add-task': (_) => AddTaskScreen(),
         },
       ),
     );
+  }
+}
+
+class AuthGate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
+    if (authProvider.isLoading) {
+      // While checking token/loading
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+    if (authProvider.isAuthenticated) {
+      return HomeScreen();
+    } else {
+      return LoginScreen();
+    }
   }
 }

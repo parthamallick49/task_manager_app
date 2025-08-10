@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:task_manager_app/utils/shared_prefs.dart';
 
 class AuthService {
-  static const baseUrl = 'http://10.0.2.2:5000/api/users';
+  //static const baseUrl = 'http://10.0.2.2:5000/api/users';
+  static const baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/users';
 
   Future<String?> login(String email, String password) async {
     print('[DEBUG] Attempting to login with email: $email');

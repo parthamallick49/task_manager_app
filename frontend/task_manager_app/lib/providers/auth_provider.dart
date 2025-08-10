@@ -5,9 +5,11 @@ class AuthProvider with ChangeNotifier {
   final AuthService _authService = AuthService();
   bool _isAuthenticated = false;
   String? _token;
+  bool _isLoading = true;
 
   bool get isAuthenticated => _isAuthenticated;
   String? get token => _token;
+  bool get isLoading => _isLoading;
 
   Future<bool> login(String email, String password) async {
     final token = await _authService.login(email, password);
@@ -29,12 +31,15 @@ class AuthProvider with ChangeNotifier {
 
   Future<void> checkAuthStatus() async {
     // Check if the token exists and is valid, otherwise logout.
+    _isLoading = true;        // start loading
+    notifyListeners();
     _token = await _authService.getToken();
     if (_token != null) {
       _isAuthenticated = true;
     } else {
       _isAuthenticated = false;
     }
+    _isLoading = false;       // done loading
     notifyListeners();
   }
 }

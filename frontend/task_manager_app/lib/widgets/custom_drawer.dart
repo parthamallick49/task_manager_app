@@ -36,7 +36,7 @@ class CustomDrawer extends StatelessWidget {
               //await prefs.remove('auth_token');
               await prefs.clear();
               userProvider.clearUser();
-              Navigator.pushReplacementNamed(context, '/login');
+              Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
             },
           ),
         ],

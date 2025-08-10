@@ -4,10 +4,11 @@ import 'package:task_manager_app/models/task.dart'; // Import the Task model
 import '../utils/shared_prefs.dart';
 
 class TaskService {
-  static const String baseUrl =
-      'http://10.0.2.2:5000/api/tasks'; // Change to your API URL
-  static const String authUrl =
-      'http://10.0.2.2:5000/api/auth'; // URL for authentication
+  //static const String baseUrl = 'http://10.0.2.2:5000/api/tasks'; // Change to your API URL
+  //static const String authUrl = 'http://10.0.2.2:5000/api/auth'; // URL for authentication
+
+  static const String baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/tasks';
+  static const String authUrl = 'https://task-manager-backend-4g65.onrender.com/api/auth';
 
   // Get tasks
   Future<List<Task>> getTasks() async {

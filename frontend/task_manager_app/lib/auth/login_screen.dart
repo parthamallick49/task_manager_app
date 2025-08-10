@@ -26,10 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _isLoading = false);
 
     if (success && mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => HomeScreen()),
-      );
+      Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     } else if(mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Login failed')),
@@ -51,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Image.asset(
                 'assets/app_logo.png',
-                height: 100,
+                height: 70,
               ),
               Text(
                 'Task Manager',
