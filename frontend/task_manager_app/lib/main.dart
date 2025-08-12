@@ -6,6 +6,7 @@ import 'package:task_manager_app/providers/auth_provider.dart';  // Import AuthP
 import 'package:task_manager_app/providers/user_provider.dart';
 import 'package:task_manager_app/screens/home_screen.dart';
 import 'package:task_manager_app/screens/add_task_screen.dart';
+import 'package:task_manager_app/screens/splash_screen.dart';
 import 'package:task_manager_app/utils/constants.dart';
 import 'package:task_manager_app/utils/shared_prefs.dart';
 
@@ -49,17 +50,18 @@ class MyApp extends StatelessWidget {
             titleLarge: TextStyle(color: Colors.black),
           ),
         ),
-        /*initialRoute: token == null ? '/login' : '/',  // Redirect to login screen if no token
+        home: SplashScreen(),
         routes: {
-          '/': (context) => HomeScreen(),
-          '/add-task': (context) => AddTaskScreen(),
-          '/login': (context) => LoginScreen(), // Route for login*/
-        home: AuthGate(),
+          '/login': (_) => LoginScreen(),
+          '/home': (_) => HomeScreen(),
+          '/add-task': (_) => AddTaskScreen(),
+        },
+        /*home: AuthGate(),
         routes: {
           '/login': (_) => LoginScreen(),
           //'/': (_) => HomeScreen(),
           '/add-task': (_) => AddTaskScreen(),
-        },
+        },*/
       ),
     );
   }

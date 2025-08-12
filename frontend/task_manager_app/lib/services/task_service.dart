@@ -9,6 +9,7 @@ class TaskService {
 
   static const String baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/tasks';
   static const String authUrl = 'https://task-manager-backend-4g65.onrender.com/api/auth';
+  static const String profileUrl = 'https://task-manager-backend-4g65.onrender.com/api/users/me';
 
   // Get tasks
   Future<List<Task>> getTasks() async {
@@ -157,7 +158,7 @@ class TaskService {
     }
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:5000/api/users/me'),
+      Uri.parse(profileUrl),
       headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',

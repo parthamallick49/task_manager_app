@@ -4,3 +4,4 @@ import 'package:flutter/material.dart';
 
 const Color primaryColor = Colors.blueAccent;
 const Color accentColor = Colors.orange;
+Color? appThemeColor = Colors.yellow[700];

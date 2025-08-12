@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/utils/constants.dart';
 import 'package:task_manager_app/utils/shared_prefs.dart';
 import 'package:task_manager_app/widgets/task_card.dart';
 import 'package:task_manager_app/providers/task_provider.dart';
@@ -77,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fontSize: 24,
             ),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: appThemeColor,
           elevation: 6.0,
           iconTheme: IconThemeData(color: Colors.black),
           actions: [

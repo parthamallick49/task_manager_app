@@ -1,6 +1,7 @@
 // lib/widgets/custom_app_bar.dart
 
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/utils/constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -19,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.black87, // Softer black color for text
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: appThemeColor,
       elevation: 6.0, // Slightly reduced shadow for a more subtle effect
       iconTheme: IconThemeData(color: Colors.black87),
       leading: showBackButton
