@@ -1,2 +1,0 @@
-E:/Practice_project/task_manager_app/android/app/.cxx/Debug/2yp2o355/x86/CMakeFiles/edit_cache.dir
-E:/Practice_project/task_manager_app/android/app/.cxx/Debug/2yp2o355/x86/CMakeFiles/rebuild_cache.dir
