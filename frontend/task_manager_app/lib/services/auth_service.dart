@@ -1,19 +1,20 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:task_manager_app/utils/constants.dart';
 import 'package:task_manager_app/utils/shared_prefs.dart';
 
 class AuthService {
   //static const baseUrl = 'http://10.0.2.2:5000/api/users';
-  static const baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/users';
+  //static const baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/users';
 
   Future<String?> login(String email, String password) async {
     print('[DEBUG] Attempting to login with email: $email');
     final response = await http.post(
-      Uri.parse('$baseUrl/login'),
+      Uri.parse(loginUrl),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': email, 'password': password}),
     );
-    print('[DEBUG] POST $baseUrl');
+    print('[DEBUG] POST $loginUrl');
     print('[DEBUG] Status code: ${response.statusCode}');
     print('[DEBUG] Response body: ${response.body}');
 
@@ -32,7 +33,7 @@ class AuthService {
   Future<bool> register(String name, String email, String password) async {
     print('[DEBUG] Attempting to register user: $email');
     final response = await http.post(
-      Uri.parse('$baseUrl/register'),
+      Uri.parse(registerUrl),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'name': name, 'email': email, 'password': password}),
     );

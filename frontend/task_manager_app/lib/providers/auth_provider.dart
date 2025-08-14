@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import '../services/auth_service.dart';  // Make sure this file exists
+
 
 class AuthProvider with ChangeNotifier {
   final AuthService _authService = AuthService();
@@ -29,7 +31,7 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> checkAuthStatus() async {
+  /*Future<void> checkAuthStatus() async {
     // Check if the token exists and is valid, otherwise logout.
     _isLoading = true;        // start loading
     notifyListeners();
@@ -40,6 +42,28 @@ class AuthProvider with ChangeNotifier {
       _isAuthenticated = false;
     }
     _isLoading = false;       // done loading
+    notifyListeners();
+  }*/
+  Future<void> checkAuthStatus() async {
+    _isLoading = true;
+    notifyListeners();
+
+    _token = await _authService.getToken();
+
+    if (_token != null) {
+      bool hasExpired = JwtDecoder.isExpired(_token!);
+
+      if (!hasExpired) {
+        _isAuthenticated = true;
+      } else {
+        _isAuthenticated = false;
+        await _authService.logout(); // remove expired token from storage
+      }
+    } else {
+      _isAuthenticated = false;
+    }
+
+    _isLoading = false;
     notifyListeners();
   }
 }

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:task_manager_app/utils/constants.dart';
 import '../screens/UpdateScreen.dart';
 import '../providers/auth_provider.dart';
 import '../services/version_check_service.dart';
@@ -74,8 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<Map<String, dynamic>> fetchLatestAppInfoFromBackend() async {
     final response = await http.get(
-      Uri.parse('https://task-manager-backend-4g65.onrender.com/api/app/version'),
-      //Uri.parse('http://10.0.2.2:5000/api/app/version'),
+      Uri.parse(getLatestAppInfoUrl),
     );
     if (response.statusCode == 200) {
       return jsonDecode(response.body);

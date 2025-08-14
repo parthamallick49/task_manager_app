@@ -1,15 +1,17 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:task_manager_app/models/task.dart'; // Import the Task model
+import 'package:task_manager_app/utils/constants.dart';
 import '../utils/shared_prefs.dart';
 
 class TaskService {
   //static const String baseUrl = 'http://10.0.2.2:5000/api/tasks'; // Change to your API URL
   //static const String authUrl = 'http://10.0.2.2:5000/api/auth'; // URL for authentication
 
-  static const String baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/tasks';
+  /*static const String baseUrl = 'https://task-manager-backend-4g65.onrender.com/api/tasks';
   static const String authUrl = 'https://task-manager-backend-4g65.onrender.com/api/auth';
-  static const String profileUrl = 'https://task-manager-backend-4g65.onrender.com/api/users/me';
+  static const String profileUrl = 'https://task-manager-backend-4g65.onrender.com/api/users/me';*/
+
 
   // Get tasks
   Future<List<Task>> getTasks() async {
@@ -23,14 +25,14 @@ class TaskService {
       }
 
       final response = await http.get(
-        Uri.parse(baseUrl),
+        Uri.parse(getTasksUrl),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',
         },
       );
 
-      print('[DEBUG] GET $baseUrl');
+      print('[DEBUG] GET $getTasksUrl');
       print('[DEBUG] Status code: ${response.statusCode}');
       print('[DEBUG] Response body: ${response.body}');
 
@@ -63,7 +65,7 @@ class TaskService {
       }
 
       final response = await http.post(
-        Uri.parse(baseUrl),
+        Uri.parse(addTaskUrl),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -98,7 +100,7 @@ class TaskService {
       print('[DEBUG] Sending request to update task with ID: $id');
 
       final response = await http.put(
-        Uri.parse('$baseUrl/$id'), // Correct URL with task ID
+        Uri.parse('$updateTaskUrl/$id'), // Correct URL with task ID
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -130,7 +132,7 @@ class TaskService {
       print('[DEBUG] Sending request to delete task with ID: $id');
 
       final response = await http.delete(
-        Uri.parse('$baseUrl/$id'), // Correct URL with task ID
+        Uri.parse('$deleteTaskUrl/$id'), // Correct URL with task ID
         headers: {
           'Authorization': 'Bearer $token',
         },
@@ -158,12 +160,13 @@ class TaskService {
     }
 
     final response = await http.get(
-      Uri.parse(profileUrl),
+      Uri.parse(getUserProfileUrl),
       headers: {
         'Authorization': 'Bearer $token',
         'Content-Type': 'application/json',
       },
     );
+    print("[DEBUG] GET $getUserProfileUrl");
     print('[DEBUG] Response code: ${response.statusCode}');
     print('[DEBUG] Response body: ${response.body}');
     if (response.statusCode == 200) {
@@ -172,6 +175,4 @@ class TaskService {
       throw Exception('Failed to load user info');
     }
   }
-
-
 }

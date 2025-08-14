@@ -1,17 +1,18 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:task_manager_app/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VersionCheckService {
-  static const String versionCheckUrl = 'https://task-manager-backend-4g65.onrender.com/api/app/version';
+  /*static const String versionCheckUrl = 'https://task-manager-backend-4g65.onrender.com/api/app/version';*/
   //static const String versionCheckUrl = 'http://10.0.2.2:5000/api/app/version';
 
   // Fetch version info from backend
   static Future<Map<String, dynamic>?> fetchLatestVersionInfo() async {
     try {
       print('[VersionCheck] Fetching version info from backend...');
-      final response = await http.get(Uri.parse(versionCheckUrl));
+      final response = await http.get(Uri.parse(getLatestAppInfoUrl));
       print('[VersionCheck] Response status: ${response.statusCode}');
       if (response.statusCode == 200) {
         final decoded = jsonDecode(response.body);
